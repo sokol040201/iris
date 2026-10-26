@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Пауза</title>
+    <link rel="stylesheet" href="overlay.css" />
+  </head>
+  <body>
+    <div class="scene">
+      <img id="photo" class="photo" alt="" />
+      <div class="shade"></div>
+      <main class="panel">
+        <p class="eyebrow">Пора дать глазам отдых</p>
+        <h1 id="title">Посмотри вдаль</h1>
+        <p id="lead" class="lead">Найди точку вдали и держи взгляд, пока не закончится пауза.</p>
+        <div class="timer" aria-live="polite">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="track" cx="60" cy="60" r="52" />
+            <circle id="progress" class="progress" cx="60" cy="60" r="52" />
+          </svg>
+          <span id="countdown">0:30</span>
+        </div>
+        <button id="skip" class="skip hidden" type="button">Пропустить</button>
+      </main>
+    </div>
+    <script src="overlay.js"></script>
+  </body>
+</html>

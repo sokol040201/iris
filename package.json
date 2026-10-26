@@ -1,0 +1,62 @@
+{
+  "name": "iris",
+  "productName": "Iris",
+  "version": "0.1.0",
+  "description": "Фоновая утилита заботы о глазах для Windows и macOS",
+  "main": "src/main.js",
+  "author": "Iris",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "build": "npm run build:win && npm run build:mac",
+    "build:win": "electron-builder --win portable --x64",
+    "build:mac": "node scripts/package-mac.js"
+  },
+  "build": {
+    "appId": "com.iris.eyecare",
+    "productName": "Iris",
+    "copyright": "Iris",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "assets/**/*"
+    ],
+    "extraMetadata": {
+      "main": "src/main.js"
+    },
+    "win": {
+      "icon": "assets/icon.png",
+      "target": [
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ]
+    },
+    "portable": {
+      "artifactName": "Iris-Portable-${version}.exe"
+    },
+    "mac": {
+      "icon": "assets/icon.png",
+      "category": "public.app-category.healthcare-fitness",
+      "identity": null,
+      "gatekeeperAssess": false,
+      "hardenedRuntime": false,
+      "target": [
+        {
+          "target": "zip",
+          "arch": ["x64", "arm64"]
+        }
+      ],
+      "extendInfo": {
+        "LSUIElement": true
+      }
+    }
+  },
+  "devDependencies": {
+    "electron": "^45.0.0",
+    "electron-builder": "^26.18.0"
+  }
+}

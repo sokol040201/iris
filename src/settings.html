@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Iris</title>
+    <link rel="stylesheet" href="settings.css" />
+  </head>
+  <body>
+    <div class="title-drag" aria-hidden="true"></div>
+    <main class="app">
+      <header class="hero">
+        <img class="logo" src="../assets/icon.png" alt="" />
+        <div>
+          <h1>Iris</h1>
+          <p>Живёт в трее и вовремя просит отвести взгляд от экрана.</p>
+        </div>
+      </header>
+
+      <section class="card">
+        <label class="row">
+          <div>
+            <strong>Напоминания</strong>
+            <span>Блокировать экран по расписанию</span>
+          </div>
+          <input id="enabled" type="checkbox" role="switch" />
+        </label>
+      </section>
+
+      <section class="card">
+        <div class="field">
+          <div class="field-copy">
+            <strong>Интервал работы</strong>
+            <span>Минуты до следующей паузы</span>
+          </div>
+          <div class="stepper">
+            <button type="button" data-step="-1" data-target="intervalMinutes" aria-label="Меньше">−</button>
+            <input id="intervalMinutes" type="number" min="1" max="180" />
+            <button type="button" data-step="1" data-target="intervalMinutes" aria-label="Больше">+</button>
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-copy">
+            <strong>Длительность паузы</strong>
+            <span>Секунды перекрытия экрана</span>
+          </div>
+          <div class="stepper">
+            <button type="button" data-step="-5" data-target="breakSeconds" aria-label="Короче">−</button>
+            <input id="breakSeconds" type="number" min="10" max="300" step="5" />
+            <button type="button" data-step="5" data-target="breakSeconds" aria-label="Дольше">+</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <label class="row">
+          <div>
+            <strong>Запускать с системой</strong>
+            <span>Iris будет ждать в трее после входа</span>
+          </div>
+          <input id="openAtLogin" type="checkbox" role="switch" />
+        </label>
+        <label class="row">
+          <div>
+            <strong>Можно пропустить</strong>
+            <span>Кнопка и Escape во время паузы</span>
+          </div>
+          <input id="allowSkip" type="checkbox" role="switch" />
+        </label>
+        <label class="row">
+          <div>
+            <strong>Звук</strong>
+            <span>Тихий сигнал в начале паузы</span>
+          </div>
+          <input id="sound" type="checkbox" role="switch" />
+        </label>
+      </section>
+
+      <section class="status">
+        <p id="statusLabel">Следующая пауза через 20:00</p>
+        <div class="actions">
+          <button id="togglePause" type="button" class="ghost">Приостановить</button>
+          <button id="takeBreak" type="button" class="primary">Пауза сейчас</button>
+        </div>
+      </section>
+
+      <p class="hint">Правило 20-20-20: каждые 20 минут смотрите 20 секунд вдаль.</p>
+    </main>
+    <script src="settings.js"></script>
+  </body>
+</html>

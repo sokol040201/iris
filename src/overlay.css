@@ -1,0 +1,171 @@
+:root {
+  color-scheme: dark;
+  --text: #f4f1ea;
+  --muted: rgba(244, 241, 234, 0.78);
+  --line: rgba(244, 241, 234, 0.22);
+  --sage: #c5d5c8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #101412;
+  color: var(--text);
+  font-family: "Segoe UI Variable Display", "Segoe UI", -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+  user-select: none;
+  cursor: default;
+}
+
+.scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.photo {
+  position: absolute;
+  inset: -4%;
+  width: 108%;
+  height: 108%;
+  object-fit: cover;
+  transform-origin: center;
+  animation: drift 36s linear alternate infinite;
+  filter: saturate(0.92) contrast(1.04);
+}
+
+.shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(10, 14, 12, 0.28) 0%, rgba(10, 14, 12, 0.55) 48%, rgba(10, 14, 12, 0.72) 100%),
+    radial-gradient(ellipse at 50% 42%, rgba(10, 14, 12, 0.08), rgba(10, 14, 12, 0.42));
+}
+
+.panel {
+  position: relative;
+  z-index: 1;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8vh 8vw 10vh;
+  text-align: center;
+}
+
+.eyebrow {
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--sage);
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 4.6vw, 4.4rem);
+  font-weight: 560;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  text-wrap: balance;
+  max-width: 14ch;
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.28);
+}
+
+.lead {
+  margin-top: 18px;
+  max-width: 36rem;
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  line-height: 1.5;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+.timer {
+  position: relative;
+  width: 148px;
+  height: 148px;
+  margin-top: 48px;
+}
+
+.timer svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.track,
+.progress {
+  fill: none;
+  stroke-width: 3.5;
+}
+
+.track {
+  stroke: var(--line);
+}
+
+.progress {
+  stroke: var(--sage);
+  stroke-linecap: round;
+  stroke-dasharray: 326.73;
+  stroke-dashoffset: 0;
+  transition: none;
+}
+
+#countdown {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-variant-numeric: tabular-nums;
+  font-size: 2rem;
+  letter-spacing: -0.04em;
+  font-weight: 520;
+}
+
+.skip {
+  margin-top: 36px;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: rgba(244, 241, 234, 0.55);
+  font: inherit;
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  padding: 8px 12px;
+  transition: color 160ms ease;
+}
+
+.skip:hover,
+.skip:focus-visible {
+  color: var(--text);
+  outline: none;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes drift {
+  from {
+    transform: scale(1.02) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.08) translate3d(-1.4%, -1%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo {
+    animation: none;
+  }
+}
